@@ -1,0 +1,1 @@
+# obiekt dla modelu plant
