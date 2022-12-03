@@ -16,3 +16,7 @@ push:
 	git add . && \
 	git commit && \
 	git push
+
+run:
+	source venv/bin/activate && \
+	python -m app
