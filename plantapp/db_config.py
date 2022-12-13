@@ -3,6 +3,8 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists
 
+from .db import Base, Plant, PlantsLib  # for Base.metadata.create_all() usage
+
 
 def create_url(
     username: str = "plant_admin",
@@ -36,7 +38,13 @@ def start_session(engine: Engine):
     return session
 
 
+def create_tables(engine: Engine):
+    Base.metadata.drop_all(engine)
+    Base.metadata.create_all(engine)
+
+
 def start_db(db_name: str = "plantapp_db"):
     engine = create_db_connection(db_name)
     create_db(engine)
+    create_tables(engine)
     return start_session(engine)

@@ -1,3 +1,5 @@
 [flake8]
 max-line-length = 120
 exclude = db_diagram.vuerd, example.vuerd.json, README.md
+#check if this can be done better, ignoring all unused files
+per-file-ignores = __init__.py:F401, base.py:F401, db_config.py:F401
