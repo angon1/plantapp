@@ -1,4 +1,4 @@
 def test_import_app():
-    import app
+    import plantapp
 
-    assert app is not None
+    assert plantapp is not None
