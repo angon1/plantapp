@@ -7,7 +7,7 @@ def test_something(mocker):
 
 
 def test_import_app():
-"""Test"""
+    """Test"""
     import plantapp
 
     assert plantapp is not None
