@@ -21,6 +21,10 @@ run:
 	source venv/bin/activate && \
 	python -m plantapp
 
+test:
+	source venv/bin/activate && \
+	pytest -rAv
+
 docker_build:
 	docker build -t plantapp_img .
 
