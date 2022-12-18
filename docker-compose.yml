@@ -14,6 +14,13 @@ services:
       - plantapp_data:/var/lib/postgresql/data
     restart: always
 
+  web:
+    ports:
+      - "8888:8888"
+    image: plantapp_img
+    container_name: plantapp_web
+    restart: always
+
   adminer:
     image: adminer
     restart: always
