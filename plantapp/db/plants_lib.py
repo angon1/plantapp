@@ -6,7 +6,7 @@ from . import Base
 
 
 class PlantsLib(Base):
-    __tablename__ = "plants library"
+    __tablename__ = "plantsLibrary"
     id = Column(Integer, primary_key=True)
     name = Column(String)
     alternate_name = Column(String)
