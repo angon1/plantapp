@@ -47,4 +47,4 @@ def start_db(db_name: str = "plantapp_db"):
     engine = create_db_connection(db_name)
     create_db(engine)
     create_tables(engine)
-    return start_session(engine)
+    return engine

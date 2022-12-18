@@ -4,7 +4,7 @@ from . import Base
 
 
 class PlantsLib(Base):
-    __tablename__ = "plants library"
+    __tablename__ = "plantsLibrary"
     id = Column(Integer, primary_key=True)
     name = Column(String)
     alternate_name = Column(String)
@@ -16,3 +16,14 @@ class PlantsLib(Base):
     culinary_hints = Column(String)
     culinary_preservation = Column(String)
     url = Column(String)
+
+    # __str__()
+
+    # __repr__()
+    def __str__(self) -> str:
+        return super().__str__()
+
+    def __repr__(self) -> str:
+        return super().__repr__()
+
+    # get object for given name
