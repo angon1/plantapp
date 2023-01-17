@@ -21,7 +21,7 @@ def create_url(
 
 def create_db_connection(name: str = "plantapp_db"):
     db_url = create_url()
-    engine = create_engine(db_url, echo=False, future=True)
+    engine = create_engine(db_url, echo=True, future=True)
     return engine
 
 
@@ -47,7 +47,7 @@ def start_db(db_name: str = "plantapp_db"):
     engine = create_db_connection(db_name)
     create_db(engine)
     create_tables(engine)
-    session = start_session(engine)
-    print("dupadupaadpdaudpaa")
-    print(session.query(PlantsLib).filter_by(name="Amaranth").all())
+    # session = start_session(engine)
+    # print("dupadupaadpdaudpaa")
+    # print(session.query(PlantsLib).filter_by(name="Amaranth").all())
     return engine

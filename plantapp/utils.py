@@ -21,4 +21,5 @@ def parse_plant_info_csv(filename="plant_info_clean.csv"):
 
 
 def write_plant_lib_to_db(engine, df: pd.DataFrame):
+    # with engine as conn:
     df.to_sql(name="plantsLibrary", con=engine, if_exists="replace")

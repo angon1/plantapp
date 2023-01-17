@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 
-from .db_config import start_db
+from .db import PlantsLib
+from .db_config import start_db, start_session
+from .utils import parse_plant_info_csv, write_plant_lib_to_db
 
 """
 FastAPI(
@@ -50,17 +52,46 @@ def get_application() -> FastAPI:
     return application
 
 
-app = get_application()
+_df = parse_plant_info_csv()
 _db_engine = start_db()
+write_plant_lib_to_db(engine=_db_engine, df=_df)
+
+app = get_application()
+
+_session = start_session(_db_engine)
 
 
 def get_db_engine():
     return _db_engine
 
 
+def get_session():
+    return _session
+
+
 @app.get("/plantslib/")
-def plants_library_output():
-    return {"Hello": "Welcome to PlantApp"}
+def plants_library():
+    # obiekty z plantslib - z db
+    return {"Hello": "Welcome to PlantApp. We know many plants"}
+
+
+@app.get("/plantslib/{name}")
+def plants_library_output(name: str):
+    session = get_session()
+
+    plant = session.query(PlantsLib.name).all()
+    print(plant)
+    return {"Hello": f"This is description of {plant}"}
+
+
+# @app.get("/plantslib/search/")
+# def search(
+#     request: Request, db: Session = Depends(get_db_engine), query: Optional[str] = None
+# ):
+#     jobs = search_job(query, db=db)
+#     return templates.TemplateResponse(
+#         "general_pages/homepage.html", {"request": request, "jobs": jobs}
+#     )
 
 
 @app.get("/")
