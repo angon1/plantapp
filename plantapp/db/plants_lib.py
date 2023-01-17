@@ -22,6 +22,6 @@ class PlantsLib(Base):
     def __repr__(self) -> str:
         return json.dumps(dict(self), ensure_ascii=False)
 
-    @classmethod
-    def get_by_name(cls, name):
-        return cls.query().filter_by(name=name).first()
+    # @classmethod
+    # def get_by_name(cls, name):
+    #     return cls.query().filter_by(name=name).first()
