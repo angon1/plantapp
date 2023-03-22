@@ -5,6 +5,6 @@ from . import Base
 
 
 class Plant(Base):
-    __tablename__ = "custom plant"
+    __tablename__ = "custom_plant"
     id = Column(Integer, primary_key=True)
     name = Column(String)
